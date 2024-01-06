@@ -26,11 +26,15 @@ public enum Student {
     this.age = age;
   }
 
-  public static Student getValueOf(long id) {
-    return Arrays.stream(Student.values())
-        .filter(student -> id == student.getId())
-        .findFirst()
-        .orElse(null);
+  public static Student getValueOf(long id){
+    try {
+      return Arrays.stream(Student.values())
+              .filter(student -> id == student.getId())
+              .findFirst()
+              .orElse(null);
+    }catch (IllegalArgumentException e){
+      throw e;
+    }
   }
 
   public long getId() {
